@@ -6,9 +6,6 @@ public class Lektion5_Uebung1
 	{
 		int k = 1;
 		double quotientValue = 0.0d;
-		double minRange = 1 * Math.pow(10, -5);
-		
-		System.out.println(minRange);
 		
 		do
 		{
@@ -16,7 +13,7 @@ public class Lektion5_Uebung1
 			k++;
 			System.out.println(6 * quotientValue);
 			
-		}while(quotientValue > minRange);
+		}while(quotientValue > 1E-5);
 		
 		
 
