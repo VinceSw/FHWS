@@ -11,12 +11,35 @@ public class Lektion5_Uebung2
 		System.out.print("\nBitte geben Sie den Exponenten ein: ");
 		int n = Integer.valueOf(inputScan.nextLine());
 		double produkt = 1;
+		int anzahlDurchläufe;
+		
+		if(n < 0)
+		{
+			anzahlDurchläufe = n * -1;
+		}
+		else
+		{
+			anzahlDurchläufe = n;
+		}
 		
 		do
 		{
-			produkt *= b;
-			n--;
-		}while(n > 0);
+			if(n > 0)
+			{
+				produkt *= b;
+			}
+			else if(n < 0)
+			{
+				produkt *= 1d / b;
+			}
+			else
+			{
+				produkt = 1d;
+			}
+			
+			anzahlDurchläufe--;
+		}while(anzahlDurchläufe > 0);
+		
 		
 			System.out.println("Ergebnis: " + produkt);
 	}
