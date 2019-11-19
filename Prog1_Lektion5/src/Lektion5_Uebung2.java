@@ -42,6 +42,7 @@ public class Lektion5_Uebung2
 		
 		
 			System.out.println("Ergebnis: " + produkt);
+			inputScan.close();
 	}
 
 }

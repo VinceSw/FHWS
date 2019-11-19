@@ -26,7 +26,7 @@ public class Lektion6_Uebung1
 	
 	public static double customRound(double inputNumber)
 	{
-		int intNumber = (int)inputNumber;
+		long intNumber = (long)inputNumber;
 		
 		if(inputNumber - intNumber >= 0.5)
 		{
@@ -47,15 +47,13 @@ public class Lektion6_Uebung1
 	}
 	
 	private static int getExponent(int precision)
-	{
-		//Getting the 
+	{ 
 		int exponent = 1;
 		
 		for(int i = 0; i < precision; i++)
 		{
 			exponent *= 10;
 		}
-	
 		return exponent;
 	}
 }
