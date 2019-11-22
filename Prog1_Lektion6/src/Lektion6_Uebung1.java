@@ -7,55 +7,53 @@ public class Lektion6_Uebung1
 	{
 		Scanner inputScan = new Scanner(System.in);
 		System.out.print("Bitte geben Sie eine Fließkommazahl ein: ");
-		double inputZahl = Double.valueOf(inputScan.nextLine());
+		double inputNumber = Double.valueOf(inputScan.nextLine());
 		
 		System.out.print("\nBitte geben Sie die gewünschte Genauigkeit der Rundung ein: ");
-		if(inputScan.hasNextInt())
+		int precision = Integer.valueOf(inputScan.nextLine());
+
+		if(precision > 0)
 		{
-			int precision = Integer.valueOf(inputScan.nextLine());
-	
-			if(precision > 0)
-			{
-				System.out.println(customRound(inputZahl, precision));
-			}
+			System.out.println(customRound(inputNumber, precision));
 		}
 		else
 		{
-			System.out.println(customRound(inputZahl));
+			System.out.println(customRound(inputNumber));
 		}
 		
 		inputScan.close();
 	}
 	
-	public static double customRound(double a)
+	public static double customRound(double inputNumber)
 	{
-		int testVar = (int)a;
+		long intNumber = (long)inputNumber;
 		
-		if(a - testVar >= 0.5)
+		if(inputNumber - intNumber >= 0.5)
 		{
-			testVar++; 
+			intNumber++; 
 		}
 		
-		return testVar;
+		return (double)intNumber;
 	}
 	
-	public static double customRound(double a, int precision)
+	public static double customRound(double inputNumber, int precision)
 	{
-		double exponent = getExponent(precision);
+		int exponent = getExponent(precision);
 		
-		return exponent;
+		double result = customRound(inputNumber * exponent);
+		result = result / exponent;
+		
+		return result;
 	}
 	
-	public static double getExponent(int precision)
-	{
-		double exponent = 1;
+	private static int getExponent(int precision)
+	{ 
+		int exponent = 1;
 		
 		for(int i = 0; i < precision; i++)
 		{
-			exponent /= 10;
+			exponent *= 10;
 		}
-		
 		return exponent;
 	}
-
 }
