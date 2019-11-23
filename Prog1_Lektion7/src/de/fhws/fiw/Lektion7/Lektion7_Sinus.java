@@ -29,7 +29,7 @@ public class Lektion7_Sinus
 		double numerator = x;  		//Entspricht x^1
 		double denumerator = 1d; 	//Entspricht 1 fakultät
 		
-		for(int k = 1; k <= 10000000 ; k++)
+		for(int k = 1; addend > 1E-15 || addend < -1E-15 ; k++)
 		{
 			numerator *= x * x * (-1);
 			denumerator *= (2 * k) * (2 * k + 1);
