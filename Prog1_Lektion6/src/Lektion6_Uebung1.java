@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import java.util.Locale;
 
 public class Lektion6_Uebung1
 {
 
 	public static void main(String[] args)
 	{
+		Locale.setDefault(new Locale("en", "US"));
 		Scanner inputScan = new Scanner(System.in);
 		System.out.print("Bitte geben Sie eine Fließkommazahl ein: ");
 		double inputNumber = Double.valueOf(inputScan.nextLine());
@@ -27,10 +29,15 @@ public class Lektion6_Uebung1
 	public static double customRound(double inputNumber)
 	{
 		long intNumber = (long)inputNumber;
+		double difference = inputNumber - intNumber;
 		
-		if(inputNumber - intNumber >= 0.5)
+		if(difference >= 0.5)
 		{
 			intNumber++; 
+		}
+		else if(difference <= -0.5)
+		{
+			intNumber--;
 		}
 		
 		return (double)intNumber;
@@ -41,7 +48,7 @@ public class Lektion6_Uebung1
 		int exponent = getExponent(precision);
 		
 		double result = customRound(inputNumber * exponent);
-		result = result / exponent;
+		result /= exponent;
 		
 		return result;
 	}

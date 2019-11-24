@@ -1,32 +1,32 @@
 import java.util.Scanner;
+import java.util.Locale;
 
 public class Lektion6_Uebung2
 {
 
 	public static void main(String[] args)
 	{
+		Locale.setDefault(new Locale("en", "US"));
 		Scanner inputScan = new Scanner(System.in);
 		System.out.print("Bitte geben Sie eine Zahl ein: ");
 		int inputNumber = Integer.valueOf(inputScan.nextLine());
 		
-		int fak = getFaculty(inputNumber);
+		double fak = getFaculty(inputNumber);
 		
 		System.out.println("Fakultät von " + inputNumber + ":\t" + fak);
 		inputScan.close();
 	}
 	
-	public static int getFaculty(int inputNumber)
+	public static double getFaculty(int inputNumber)
 	{
-		int result = 1; 
-		if(inputNumber == 0)
+		double result = 1d; 
+		
+		for(int i = 1; i <= inputNumber; i++)
 		{
-			return 1;
+			result *= i;
 		}
-		else
-		{
-			result = inputNumber * getFaculty(inputNumber - 1);
-			return result;
-		}
+		
+		return result;
 	}
 
 }
