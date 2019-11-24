@@ -19,7 +19,7 @@ public class Lektion7_Sinus
 	
 	/**
 	 *  Calculates the sine of the entered number x.
-	 * @param real number (in RAD) from which the sine is to be calculated.
+	 * @param x real number (in RAD) from which the sine is to be calculated.
 	 * @return Result of the calculation; Real number between -1 and 1 (including both).
 	 */
 	public static double sin(double x)
