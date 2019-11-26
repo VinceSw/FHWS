@@ -1,0 +1,10 @@
+#lang racket
+(define (zahl-umdrehen x)
+  (switch-iter x 0))
+
+(define (switch-iter n reverse)
+  (if (= n 0)
+      reverse
+      (switch-iter (quotient n 10) (+ (* reverse 10) (remainder n 10)))
+  )
+)

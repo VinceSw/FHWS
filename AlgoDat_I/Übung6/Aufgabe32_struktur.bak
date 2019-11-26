@@ -1,0 +1,71 @@
+#lang racket
+(define nil (list))
+
+(define struktur1
+  (cons
+   (cons
+    (list 24)
+                    
+    (cons
+     (list 1)
+     (list 2))
+    )
+   (cons
+    (list 20)
+    (cons
+     (list 1)
+     (list 1))
+    )
+   )
+  )
+
+(define struktur2
+  (cons 
+   (cons 7
+         (cons 2
+               (cons 3
+                     (cons 1 nil)
+                     )
+               )
+         )
+   nil)
+  )
+
+(define struktur3
+  (cons
+   (cons 3
+         (cons 3 nil)
+         )
+   (cons 3
+         (cons 3
+               (cons 3 3)
+               )
+         )
+   )
+  )
+
+(define struktur4
+  (cons
+   (cons
+    (cons nil
+          (cons 6
+                (cons 1
+                      (cons 0
+                            (cons 2 4)
+                            )
+                      )
+                )
+          )
+    (cons 3 3)
+    )
+   (cons 10
+         (cons 7
+               (cons 8
+                     (cons 9
+                           (cons 3 nil)
+                           )
+                     )
+               )
+         )
+   )
+ )

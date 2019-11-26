@@ -1,0 +1,9 @@
+#lang racket
+(define (isbn-test x)
+  (if (= (/ (isbn-sum 0 0 x) 11) 10) "X" (((/ (isbn-sum 0 0 x) 11) 10))))
+
+
+(define (isbn-sum product counter n)
+  (if (>= counter 9)
+      product
+      (isbn-sum (* counter (remainder (quotient n (expt 10 (- 9 counter))) (expt 10 1))) (+ counter 1) n)))

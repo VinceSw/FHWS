@@ -1,0 +1,21 @@
+#lang racket
+(define (osterformel j)
+  (let* ((a (get-remainder j 19))
+         (b (get-remainder j 4))
+         (c (get-remainder j 7))
+         (k (get-roundedquotient j 100))
+         (p (get-roundedquotient (+ (* 8 k) 13) 25))
+         (q (get-roundedquotient k 4))
+         (M (get-remainder (- (- (+ 15 k) p) q) 30))
+         (N (get-remainder (- (+ k 4) q) 7))
+         (d (get-remainder (+ (* 19 a) M) 30))
+         (e (get-remainder (+ (+ (+ (* 2 b) (* 4 c)) (* 6 d)) N) 7)))
+         (+ (+ 22 d) e)
+        )
+  )
+
+(define (get-remainder j x)
+  (remainder j x))
+
+(define (get-roundedquotient j n)
+  (floor (quotient j n)))

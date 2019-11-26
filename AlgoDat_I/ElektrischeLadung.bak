@@ -1,0 +1,7 @@
+#lang racket
+; Berechnen und Ausgabe der Elementarladung e eines Elektrons
+(define e (* -1.6022 (expt 10 19)))
+e
+; Berechnen und Ausgabe der elektischen Ladung Q von insgesamt 8 Elektronen
+(define Q (* 8 (* e -1)))
+Q

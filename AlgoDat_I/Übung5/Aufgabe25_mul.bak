@@ -1,0 +1,6 @@
+#lang racket
+(define (sum x y)
+  (if (= y 0) 0 (+ x y)))
+
+(define (mul x y)
+  (if (= y 0) 0 (* x (- y 1))))

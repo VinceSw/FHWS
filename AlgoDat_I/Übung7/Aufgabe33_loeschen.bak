@@ -1,0 +1,8 @@
+#lang racket
+(define (loesche liste prädikat)
+  (loesche-iter liste prädikat))
+
+(define (loesche-iter l f)
+  (if (f (car l))
+      (loesche-iter (cdr l) f)
+      l))

@@ -1,0 +1,14 @@
+#lang racket
+(define (zaehlen start ende n)
+  (if (and (and (integer? start) (integer? ende)) (> n 0))
+      (zaehlen-iter start ende n 1)
+      0))
+
+(define (zaehlen-iter start ende n counter)
+  (if (< start ende)
+      (if (and (= (remainder start 7) 0) (= (remainder start 3) 0))
+          (if (= n counter)
+              start
+              (zaehlen-iter (+ start 1) ende n (+ counter 1)))
+          (zaehlen-iter (+ start 1) ende n counter))
+     0 )) 
