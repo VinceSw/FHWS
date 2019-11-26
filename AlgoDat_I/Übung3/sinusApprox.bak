@@ -1,0 +1,16 @@
+#lang racket
+(define (sinus-approx x)
+  (if (<= x 0.1) x (sin-iter x 0 0)))
+
+(define (sin-iter x counter erg)
+  (if (> counter x)
+      erg
+      (sin-iter x (+ counter 1) (* (expt -1 counter) (/ (expt x (* 2 (+ counter 1))) (fakultaet (* 2 (+ counter 1))))))))
+
+(define (fakultaet n)
+  (fak-iter 1 1 n))
+
+(define (fak-iter produkt zaehler n)
+  (if (>= zaehler n)
+       (* produkt zaehler)
+       (fak-iter (* zaehler produkt) (+ zaehler 1 ) n)))

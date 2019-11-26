@@ -1,0 +1,26 @@
+#lang racket
+(define (f1 a b)
+  (and
+   (and
+    (if (not (or (= a 1) (= b 1))) #t #f)
+    (if (or (= a 1) (= b 1)) #t #f))
+   (and (= a 1) (not b 1))
+   )
+  )
+
+(define (f2 a b c)
+  (or
+   (= a 1)
+   (and (= a 1) (= b 1) (not (= c 1)))
+   (and (not (= a 1)) (= c 1))
+   (and (or (= a 0) (= b 0)) (= c 1))
+   )
+)
+
+(define (f3 a b c d)
+  (and
+   (xor (= a 0) (= b 1))
+   (and (= a 0) (= b 1) (= c 0))
+   (or (= d 0) (= c 0) (= b 0) (= a 0))
+  )
+)

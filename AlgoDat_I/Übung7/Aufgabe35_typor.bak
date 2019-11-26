@@ -1,0 +1,16 @@
+#lang racket
+(define (typ-or typ1 typ2)
+  (lambda (a) (checkType typ1 typ2 a)))
+
+(define (checkType typ1 typ2 a)
+  (if (or (and (typ1 (car a)) (typ1 (cdr a)))
+          (and (typ2 (car a)) (typ2 (cdr a))))
+          #t
+          #f)
+      )
+
+
+  (define paar-oder-liste? (typ-or pair? list?))
+  (define integer-oder-boolean? (typ-or integer? boolean?))
+  (integer-oder-boolean? (paar-oder-liste? (cons 1 2)))
+  (integer-oder-boolean? (paar-oder-liste? (cons 2 3)))

@@ -1,0 +1,9 @@
+#lang racket
+(define (nat-wurzel x)
+  (wurzel-iter))
+
+(define (wurzel-iter x)
+  (if (< x 1)
+      x
+      (if (= (remainder x 2) 0) (nat-wurzel (- x 1)) )))
+

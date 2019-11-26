@@ -1,0 +1,4 @@
+#lang racket
+(define (aufsteigendes-produkt? a b c d)
+  (and ((>= d c b a) (if (= (+ a (+ b c)) d) #t #f))
+  )

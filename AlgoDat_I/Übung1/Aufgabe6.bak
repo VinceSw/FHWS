@@ -1,0 +1,5 @@
+#lang racket
+(define (squared-max x y z)
+  (if (> (sqrt x) (sqrt y) (sqrt z)) (sqrt x) (if (> (sqrt y) (sqrt x) (sqrt z))  
+
+(define (sqrt x) (* x x))
