@@ -78,14 +78,13 @@ public class Lektion7_ArithMittel
 		double arithMean = getArithmeticMean(values);
 		
 		double sum = 0d;
-		
-		
+				
 		for(double x : values)
 		{
 			sum += Math.pow(x - arithMean, 2); 
 		}
 
-		return sum / values.length;
+		return Math.sqrt(sum / values.length);
 	}
 	
 	/**
