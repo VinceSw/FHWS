@@ -53,7 +53,8 @@ public class Lektion7_spielen
 		{
 			char n = wordArray[i];
 			
-			if(n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' )
+			if(n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' 
+					|| n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' )
 			{
 				newWordArr[countNewIndex] = n;
 				newWordArr[++countNewIndex] = 'b';
