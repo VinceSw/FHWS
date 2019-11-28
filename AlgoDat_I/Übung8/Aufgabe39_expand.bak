@@ -1,0 +1,19 @@
+#lang racket
+(define (expandiere sym-liste)
+  (expand-iter sym-liste "" (list) 1))
+
+(define (expand-iter l temp newList counter)
+  (if (null? l)
+      (reverse newList)
+      (if (> counter 1)
+          (expand-iter l (car l) (cons temp newList) (- counter 1))
+          (if (integer? (car l))
+          (expand-iter (cdr l) (car (cdr l)) newList (car l))
+          (expand-iter (cdr l) (car l) (cons temp newList) 1)
+          )
+          )
+      )
+  )
+
+; ============================= Beispiele =============================
+(expandiere '(7 b a 3 c))
