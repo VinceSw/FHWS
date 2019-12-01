@@ -25,7 +25,7 @@ public class Lektion7_spielen
 	public static void spielen(char[] wordArray)
 	{
 		int amountVowels = getResultArray(wordArray);
-		char[] newWordArr = new char[wordArray.length + (amountVowels*3)];
+		char[] newWordArr = new char[wordArray.length + (amountVowels*2)];
 		
 		newWordArr = manipulateInput(wordArray, newWordArr);
 		
@@ -38,14 +38,16 @@ public class Lektion7_spielen
 		
 		for(char n : wordArray)
 		{
-			if(n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' )
+			if(n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' 
+					|| n == 'A' || n == 'E' || n == 'I' || n == 'O' || n == 'U' )
 				amountVowels++;
 		}
 		
 		return amountVowels;
 	}
 	
-	public static char[] manipulateInput(char[] wordArray, char[] newWordArr)
+	public static char[] manipulateInput(char[] wordArray, 
+			char[] newWordArr)
 	{
 		int countNewIndex = 0;
 		
@@ -54,7 +56,7 @@ public class Lektion7_spielen
 			char n = wordArray[i];
 			
 			if(n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' 
-					|| n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u' )
+					|| n == 'A' || n == 'E' || n == 'I' || n == 'O' || n == 'U' )
 			{
 				newWordArr[countNewIndex] = n;
 				newWordArr[++countNewIndex] = 'b';
