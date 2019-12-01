@@ -14,8 +14,10 @@ public class Lektion7_Lottozahlen
 
 		for (int i = 0; i < 6; i++)
 		{
-			int lottozahl = (int) (Math.random() * 49);
+			int lottozahl = (int) (Math.random() * 49 + 1);
 			boolean taken = alreadyTaken(lottoArray, lottozahl);
+			
+			boolean t2 = 1 == 2 ? true : false;
 
 			if (!taken)
 			{

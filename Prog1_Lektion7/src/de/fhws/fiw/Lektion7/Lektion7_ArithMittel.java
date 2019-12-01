@@ -26,7 +26,8 @@ public class Lektion7_ArithMittel
 		else
 		{
 			inputScan.close();
-			throw new IllegalArgumentException("Die Anzahl der einzugebenden Werte muss größer 0 sein!");
+			throw new IllegalArgumentException("Die Anzahl der einzugebenden "
+					+ "Werte muss größer 0 sein!");
 		}
 		
 		inputScan.close();
