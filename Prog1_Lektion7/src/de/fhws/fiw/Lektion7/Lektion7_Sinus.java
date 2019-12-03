@@ -12,7 +12,8 @@ public class Lektion7_Sinus
 	   System.out.print("Bitte geben Sie eine Zahl ein: ");
 	   double inputNumber = Double.valueOf(inputScan.nextLine());
 	   
-	   System.out.println("Sinus: " + sin(inputNumber));
+	   System.out.println("Sinus:\t" + sin(inputNumber));
+	   System.out.println("Math.sin():\t" +  Math.sin(inputNumber));
 	   
 	   inputScan.close();
 	}
@@ -24,15 +25,15 @@ public class Lektion7_Sinus
 	 */
 	public static double sin(double x)
 	{
-		double sum = 1;
+		double sum = x;
 		double addend = 1d; 
 		double numerator = x;  		//Entspricht x^1
 		double denumerator = 1d; 	//Entspricht 1 fakultät
 		
-		for(int k = 1; addend > 1E-15 || addend < -1E-15 ; k++)
+		for(int k = 3; addend > 1E-15 || addend < -1E-15 ; k+=2)
 		{
-			numerator *= x * x * (-1);
-			denumerator *= (2 * k) * (2 * k + 1);
+			numerator *= -x * x;
+			denumerator *= k * (k-1);
 			addend = numerator / denumerator;
 			sum +=  addend;
 		}

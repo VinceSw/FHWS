@@ -1,9 +1,9 @@
-package de.fhws.fiw.Lektion7;
+package de.fhws.fiw.Lektion8;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Lektion7_Hangman
+public class Lektion8_Hangman
 {
 
 	public static void main(String[] args)

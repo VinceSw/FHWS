@@ -8,7 +8,7 @@ public class Lektion7_Lottozahlen
 		getLotteryNumbers();
 	}
 
-	public static int[] getLotteryNumbers()
+	public static void getLotteryNumbers()
 	{
 		int[] lottoArray = new int[6];
 
@@ -17,8 +17,6 @@ public class Lektion7_Lottozahlen
 			int lottozahl = (int) (Math.random() * 49 + 1);
 			boolean taken = alreadyTaken(lottoArray, lottozahl);
 			
-			boolean t2 = 1 == 2 ? true : false;
-
 			if (!taken)
 			{
 				lottoArray[i] = lottozahl;
@@ -32,7 +30,6 @@ public class Lektion7_Lottozahlen
 		lottoArray = sortArray(lottoArray);
 		
 		displayLottNumbers(lottoArray);
-		return lottoArray;
 	}
 
 	public static boolean alreadyTaken(int[] lottoArray, int lottozahl)
@@ -52,11 +49,12 @@ public class Lektion7_Lottozahlen
 	
 	public static int[] sortArray(int[] lottoArray)
 	{
-		for (int i = 0; i < lottoArray.length - 1; i++) 
+		
+		for (int i = 0; i < lottoArray.length; i++) 
 		{
 			for (int j = i + 1; j < lottoArray.length; j++)
 			{
-				if(lottoArray[i] > lottoArray[j])
+-				if(lottoArray[i] > lottoArray[j])
 				{
 					int temp = lottoArray[i];
 					lottoArray[i] = lottoArray[j];
