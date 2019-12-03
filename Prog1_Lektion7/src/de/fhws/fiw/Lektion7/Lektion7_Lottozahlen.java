@@ -54,7 +54,7 @@ public class Lektion7_Lottozahlen
 		{
 			for (int j = i + 1; j < lottoArray.length; j++)
 			{
--				if(lottoArray[i] > lottoArray[j])
+				if(lottoArray[i] > lottoArray[j])
 				{
 					int temp = lottoArray[i];
 					lottoArray[i] = lottoArray[j];
