@@ -19,12 +19,12 @@ public class Lektion8_DownloadImage
 				+ "</body>";
 		String searchStringS = "<img src=\"";
 		String searchStringE = ".png";
-		int indexStart = seite.indexOf("<img");
+		int indexStart = seite.indexOf(searchStringS);
 		if(indexStart != -1)
 		{
 			indexStart += searchStringS.length();
 			
-			int indexEnde = seite.indexOf(".png");
+			int indexEnde = seite.indexOf(searchStringE);
 			if(indexEnde != -1)
 			{
 				indexEnde += searchStringE.length();

@@ -22,6 +22,7 @@ public class Lektion8_Hangman
 				"Diagramm" };
 		int randomWord = (int) (Math.random() * availableWords.length);
 
+		System.out.println(randomWord);
 		return availableWords[randomWord].toUpperCase().toCharArray();
 	}
 
@@ -32,8 +33,8 @@ public class Lektion8_Hangman
 	public static void processGame(char[] word)
 	{
 		Scanner inputScan = new Scanner(System.in);
-		char[] guessedLetters = new char[word.length];
-		Arrays.fill(guessedLetters, '_');
+		char[] guessedArray = new char[word.length];
+		Arrays.fill(guessedArray, '_');
 		int tries = 0;
 		String wordStr = String.valueOf(word);
 		String guessedStr = "";
@@ -41,13 +42,14 @@ public class Lektion8_Hangman
 		//Process as long as the user hasn't won and hasn't reached the limit auf tries
 		while(tries < 15 && !wordStr.equals(guessedStr))
 		{
+			System.out.print("\n\n" + (tries + 1) + ".Versuch: ");
+			
 			//Display the current result 
-			for(char n : guessedLetters)
+			for(char n : guessedArray)
 			{
 				System.out.print(n + " ");
 			}
 			
-			System.out.print("\n\n" + (tries + 1) + ".Versuch: ");
 			char inputChar = inputScan.nextLine().trim().charAt(0);
 			
 			//Set the input letter at the right place in guessedLetters if it's in the searched word
@@ -58,11 +60,11 @@ public class Lektion8_Hangman
 
 				if (String.valueOf(word[i]).equals(x))
 				{
-					guessedLetters[i] = word[i];
+					guessedArray[i] = word[i];
 				} 
 			}
 			tries++;
-		   guessedStr = String.valueOf(guessedLetters); 
+		   guessedStr = String.valueOf(guessedArray); 
 		}
 		
 		getResult(tries, wordStr, guessedStr);
@@ -71,7 +73,7 @@ public class Lektion8_Hangman
 	
 	private static void getResult(int triesNeeded, String wordStr, String guessedStr)
 	{
-		if(triesNeeded == 14 || !wordStr.equals(guessedStr))
+		if(triesNeeded == 15 || !wordStr.equals(guessedStr))
 		{
 			System.out.println("\nSie haben verloren!");
 		}
