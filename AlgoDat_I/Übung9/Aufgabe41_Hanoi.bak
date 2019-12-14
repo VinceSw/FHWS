@@ -1,0 +1,12 @@
+#lang racket
+(define (tuerme-von-hanoi n)
+  (define (hanoi n originPole sparePole finalPole)
+    (if (> n 1)
+        (cons (hanoi (- n 1) originPole finalPole sparePole) (hanoi (- n 1) originPole sparePole finalPole))
+        (cons originPole finalPole)
+        )
+    )
+  (hanoi n 'a 'b 'c)
+  )
+
+(tuerme-von-hanoi 3)

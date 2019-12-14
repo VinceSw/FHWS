@@ -25,12 +25,6 @@
       )
   )
 
-(define (reverse-list liste newList)
-  (if (null? liste)
-      newList
-      (reverse-list (cdr liste) (cons (car liste) newList))
-      )
-  )
 
 ; ============================= Beispiele =============================
 
@@ -38,5 +32,6 @@
 (compress '(a b b c c c))
 (compress '(a b b c c c a b c))
 (compress '(a a a a a a a a a a))
+(compress '())
 
 

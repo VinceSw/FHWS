@@ -1,0 +1,17 @@
+#lang racket
+(define (liste-teilen eingabe)
+  (define (teilen oldList newList1 newList2 counter)
+    (if (null? oldList)
+        (list (reverse newList1) (reverse newList2))
+        (if (odd? counter)
+            (teilen (cdr oldList) (cons (car oldList) newList1) newList2 (+ counter 1))
+            (teilen (cdr oldList) newList1 (cons (car oldList) newList2) (+ counter 1))
+            )
+        )
+    )
+  (teilen eingabe '() '() 1)
+  )
+
+(liste-teilen '(1 2 3 4 5 6 7 8 9))
+(liste-teilen '(1 2 3 4 5 6 7 8 9 10))
+(liste-teilen '()) 
