@@ -10,6 +10,7 @@ public class Auto
 	private int LeistungKW;
 	private String Karosserie;
 	private int Baujahr;
+	public static int anzahlAutos = 0;
 	
 	String getMarke()
 	{
@@ -54,7 +55,7 @@ public class Auto
 		return this.Baujahr;
 	}
 	
-	Auto(String Marke, String Modell, int HubraumCcm, String Farbe, int Leistung, String Karosserie, int Baujahr)
+	public Auto(String Marke, String Modell, int HubraumCcm, String Farbe, int Leistung, String Karosserie, int Baujahr)
 	{
 		this.Marke = Marke;
 		this.Modell = Modell;
@@ -70,5 +71,7 @@ public class Auto
 		this.LeistungKW = Leistung;
 		this.Karosserie = Karosserie;
 		this.Baujahr = Baujahr; 
+		
+		anzahlAutos++;
 	}
 }
