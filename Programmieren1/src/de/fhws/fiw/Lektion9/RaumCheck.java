@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class RaumCheck
 {
-
 	public static void main(String[] args)
 	{
 		executeMenu();
