@@ -1,5 +1,6 @@
 package de.fhws.fiw.Lektion11;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TicTacToe3D
@@ -13,83 +14,64 @@ public class TicTacToe3D
 
 	public static void fillGameField(boolean[][][] gameField)
 	{
-		boolean lastTurn = false;
+		boolean arrayContains = false;
+		
 		
 		for(int i = 0; i < gameField.length; i++)
 		{
+			int anzahlX = 0;
+			int anzahlO = 0;
+			
 			for(int j = 0; j < gameField[i].length; j++)
-			{
-				int[] kSpeicher = new int[gameField[i][j].length];
-				for(int m = 0; m < kSpeicher.length; m++)
-				{
-					int randomField = getRandomInt(3);
-					if(kSpeicher[m] == 0)
-					{
-						kSpeicher[m] = randomField;
-					}
-				}
+			{	
+				int randomInt; 
+				int[] speicher = new int[gameField[i][j].length];
+				Arrays.fill(speicher, speicher.length);
 				
-				
-				for(int k = 0; k < gameField[i][j].length; k++)
+				for(int n = 0; n < speicher.length; n++)
 				{
-					if(lastTurn == false)
+					randomInt = getRandomInt(3);
+					
+					for(int m = 0; m < speicher.length; m++)
 					{
-						for(int m = 0; m < kSpeicher.length; m++)
+						if(speicher[m] == randomInt)
 						{
-							if(kSpeicher[m] == 0 || m == kSpeicher.length)
-							{
-								gameField[i][j][m] = true;
-								lastTurn = true;
-							}
+							arrayContains = true;
 						}
+					}
+					
+					if(arrayContains)
+					{
+						arrayContains = false;
+						n--;
 					}
 					else
 					{
-						for(int m = 0; m < kSpeicher.length; m++)
-						{
-							if(kSpeicher[m] == 0 || m == kSpeicher.length)
-							{
-								gameField[i][j][m] = false;
-								lastTurn = false;
-							}
-						}
+						speicher[n] = randomInt;
+					}
+				}
+				
+				for(int k = 0; k < gameField[i].length; k++)
+				{			
+					if(anzahlX > anzahlO)
+					{
+						gameField[i][j][speicher[k]] = false;
+						anzahlO++;
+					}
+					else
+					{
+						gameField[i][j][speicher[k]] = true;
+						anzahlX++;
 					}
 				}
 			}
 		}
-	}
-
-	private static boolean hasHigherAmount(boolean[][][] gameField, int iIndex, int jIndex, boolean searchInd)
-	{
-		boolean hasHigherAmount = false;
-		int countOccurenceTrue = 0;
-		
-		
-		for(int k = 0; k < gameField[iIndex][jIndex].length; k++)
-		{
-			if(gameField[iIndex][jIndex][k] == searchInd)
-			{
-				countOccurenceTrue++;
-			}
-			else
-			{
-				countOccurenceTrue--;
-			}
-		}
-		
-		return hasHigherAmount = countOccurenceTrue > 0 ? true : false;
-	}
-
-	private static boolean getRandom()
-	{
-		final Random randomBool = new Random();
-		return randomBool.nextBoolean();
 	}
 	
 	private static int getRandomInt(int range)
 	{
 		final Random randomInt = new Random();
-		return (randomInt.nextInt(range) + 1);
+		return randomInt.nextInt(range);
 	}
 
 	public static void main(String[] args)

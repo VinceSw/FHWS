@@ -18,13 +18,14 @@ public class Lektion6_Uebung4
 		{
 			System.out.println("Die eingegebene Zahl ist keine Primzahl");
 		}
+		
+		inputScan.close();
 
 	}
 	
 	public static boolean checkPrimeNumber(int inputNumber)
 	{
 		boolean isPrimeNumber = true;
-		int j = 2;
 		
 		for(int k = 2; k <= Math.sqrt(inputNumber); k++)
 		{
