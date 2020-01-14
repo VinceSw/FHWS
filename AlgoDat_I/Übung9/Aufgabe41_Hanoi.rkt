@@ -9,28 +9,29 @@
     )
   (hanoi n '() 'a 'b 'c)
   )
-(tuerme-von-hanoi 3)
+;(tuerme-von-hanoi 3)
 ;===============================================================================================================
 
 
 ;===================================== Second attempt -----> getting better ====================================
 
 (define (tuerme-von-hanoi2 n)
-  (define (move n . poles)
-    (cond ((= n 0) (cons (car poles) (car (cddr poles))))
+  (define (move n newList . poles)
+    (append newList (cond ((= n 0) (cons (car poles) (car (cddr poles))))
           ((> n 0)
-           (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles)))
-           (display (string-append "Scheibe " (number->string n) ": "))
-           (display (string-append (symbol->string (car poles)) (symbol->string (car (cddr poles)))))
-           (newline)
-           (move (- n 1) (car (cdr poles)) (car poles) (car (cddr poles)))
+           (list (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles))))
+           ;(display (string-append "Scheibe " (number->string n) ": "))
+           ;(display (string-append (symbol->string (car poles)) (symbol->string (car (cddr poles)))))
+           ;(newline)
+           (list (move (- n 1) (car (cdr poles)) (car poles) (car (cddr poles))))
           )
           )
+            )
     )
   (move n 'a 'b 'c)
   )
 
-;(tuerme-von-hanoi2 3)
+(tuerme-von-hanoi2 3)
 ;===============================================================================================================
 
 ;===============================================================================================================
@@ -39,18 +40,18 @@
 ;=======  - Look at the cons (in else statement).                                                        =======
 ;===============================================================================================================
 (define (tuerme-von-hanoi3 n)
-  (define (move n . poles)
+  (define (move n newList . poles)
     (cond ((= n 0) (cons (car poles) (car (cddr poles))))
           (else
-           (display (cons (car (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles)))) (cdr (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles))))))
-           ;(display (string-append "Scheibe " (number->string n) ": "))
-           ;(display (string-append (symbol->string (car poles)) (symbol->string (car (cddr poles)))))
+           (cons (car (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles)))) (cdr (move (- n 1) (car poles) (car (cddr poles)) (car (cdr poles)))))
+           (display (string-append "Scheibe " (number->string n) ": ")) 
+           (display (string-append (symbol->string (car poles)) (symbol->string (car (cddr poles)))))
            (newline)
-           (display (cons (car poles) (cdr (move (- n 1) (car (cdr poles)) (car poles) (car (cddr poles))))))
+           (cons (car poles) (cdr (move (- n 1) (car (cdr poles)) (car poles) (car (cddr poles)))))
           )
           )
     )
-  (move n 'a 'b 'c)
+  (move n '() 'a 'b 'c)
   )
 
 ;(tuerme-von-hanoi3 3)
