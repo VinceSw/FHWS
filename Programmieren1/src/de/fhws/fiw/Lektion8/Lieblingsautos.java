@@ -34,7 +34,6 @@ public class Lieblingsautos
 		System.out.println("Karosserie:\t" + cars[n].getKarosserie());
 		System.out.println("Baujahr:\t" + cars[n].getBaujahr());
 		
-		String test = "";
 		
 	}
 
