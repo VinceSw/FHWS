@@ -1,0 +1,21 @@
+#lang racket
+(define (listen-verschmelzen eingabe)
+  (define (merge oldList newList counter)
+    (if (and (null? (car oldList)) (null? (cdr oldList)))
+        newList
+        (if (list? (car oldList))
+            (if (odd? counter)
+                (cons (car (car oldList)) (merge (cons (cdr (car oldList)) (cdr oldList)) newList (+ counter 1)))
+                (cons (car (car oldList)) (merge (cons (car oldList) (cdr (cdr oldList))) newList (+ counter 1)))
+                )
+            (if (odd? counter)
+                (cons (car (car oldList)) (merge (cons (cdr (car oldList)) (cdr oldList)) newList (+ counter 1)))
+                (cons (car oldList) (merge (cons (car oldList) (cdr (cdr oldList))) newList (+ counter 1)))
+                )
+            )
+        )
+    )
+  (merge eingabe '() 1)
+  )
+
+(listen-verschmelzen '((1 3 5 7 9) (2 4 6 8)))
