@@ -21,38 +21,40 @@ public class TestBaum
 		Knoten k5 = new Knoten("Yuzer", "Cyber user");
 		tree.insert(k5);
 		
-		tree.print();
+//		tree.print();
+//		
+//		System.out.println();
+//		System.out.printf("%-40s", "Wort: hallway hobo");
+//		System.out.println();
+//		System.out.println("Bedeutung: " + tree.search("hallway hobo"));
+//	
+//		System.out.println();
+//		System.out.printf("%-40s", "Wort: Clown College");
+//		System.out.println();
+//		System.out.println("Bedeutung: " + tree.search("Clown College"));
+//		
+//		System.out.println();
+//		System.out.printf("%-40s", "Wort: Yuzer");
+//		System.out.println();
+//		System.out.println("Bedeutung: " + tree.search("Yuzer"));
+//		
+//		System.out.println();
+//		System.out.printf("%-40s", "Wort: Bla");
+//		System.out.println();
+//		System.out.println("Bedeutung: " + tree.search("Bla"));
+//		
+//		System.out.println();
+//		System.out.printf("%-40s", "Wort: algebra");
+//		System.out.println();
+//		System.out.println("Bedeutung: " + tree.search("algebra"));
 		
-		System.out.println();
-		System.out.printf("%-40s", "Wort: hallway hobo");
-		System.out.println();
-		System.out.println("Bedeutung: " + tree.search("hallway hobo"));
-	
-		System.out.println();
-		System.out.printf("%-40s", "Wort: Clown College");
-		System.out.println();
-		System.out.println("Bedeutung: " + tree.search("Clown College"));
-		
-		System.out.println();
-		System.out.printf("%-40s", "Wort: Yuzer");
-		System.out.println();
-		System.out.println("Bedeutung: " + tree.search("Yuzer"));
-		
-		System.out.println();
-		System.out.printf("%-40s", "Wort: Bla");
-		System.out.println();
-		System.out.println("Bedeutung: " + tree.search("Bla"));
-		
-		System.out.println();
-		System.out.printf("%-40s", "Wort: algebra");
-		System.out.println();
-		System.out.println("Bedeutung: " + tree.search("algebra"));
-		
-		tree.delete(k3);
-		tree.delete(k4);
+		//tree.delete(k3);
+		//tree.delete(k4);
 		
 		System.out.println();
 		System.out.println("------------------------------------------------------------------------");
+		tree.print();
+		tree.delete(k1);
 		tree.print();
 	}
 

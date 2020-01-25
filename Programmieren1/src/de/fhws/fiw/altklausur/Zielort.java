@@ -57,6 +57,4 @@ public class Zielort
 		
 		return nameDistance;
 	}
-	
-	
 }
