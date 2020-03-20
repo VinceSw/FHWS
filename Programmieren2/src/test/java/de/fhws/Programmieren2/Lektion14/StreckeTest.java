@@ -1,8 +1,10 @@
-package de.fhws.Programmieren2;
+package de.fhws.Programmieren2.Lektion14;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import de.fhws.Programmieren2.Lektion14.Strecke;
 
 class StreckeTest
 {

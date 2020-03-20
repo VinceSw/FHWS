@@ -1,4 +1,4 @@
-package de.fhws.Programmieren2;
+package de.fhws.Programmieren2.Lektion14;
 
 public class Person
 {
