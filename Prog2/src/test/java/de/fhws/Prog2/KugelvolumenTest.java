@@ -13,7 +13,7 @@ class KugelvolumenTest
 		try
 		{
 			Kugelvolumen.berechneKugelvolumen(0);
-			fail("Runtime exception expected.");
+			fail("RuntimeException expected.");
 		}
 		catch(RuntimeException e)
 		{
@@ -40,7 +40,7 @@ class KugelvolumenTest
 		try
 		{
 			Kugelvolumen.berechneKugelvolumen(-1);
-			fail("Runtime exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{

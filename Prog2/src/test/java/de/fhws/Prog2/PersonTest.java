@@ -14,7 +14,7 @@ class PersonTest
 		try
 		{
 			person = new Person("vincent", "swigler", "grundweg", "6", "97265", "hettstadt");
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -41,7 +41,7 @@ class PersonTest
 		try
 		{
 			person = new Person("brianna", "Swigler", "Lerchenweg", "4", "97522", "Sand am Main");
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -55,7 +55,7 @@ class PersonTest
 		try
 		{
 			person = new Person("Martina", "Swigler", "hermannsberger Straße", "5", "96151", "Breitbrunn");
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -69,7 +69,7 @@ class PersonTest
 		try
 		{
 			person = new Person("Matthias", "Koch", "Hermannsberger Straße", "A5", "96151", "Breitbrunn");
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{

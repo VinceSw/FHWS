@@ -14,7 +14,7 @@ class PunktTest
 		try
 		{
 			punkt.verschiebePunkt(1921, 1080);
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -29,7 +29,7 @@ class PunktTest
 		try
 		{
 			punkt.verschiebePunkt(-1920, 1080);
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -43,7 +43,7 @@ class PunktTest
 		try
 		{
 			punkt.verschiebePunkt(1920, 1081);
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
@@ -57,7 +57,7 @@ class PunktTest
 		try
 		{
 			punkt.verschiebePunkt(1920, -1080);
-			fail("Runtime Exception expected");
+			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
 		{
