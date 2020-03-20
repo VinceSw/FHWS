@@ -12,7 +12,7 @@ class KugelvolumenTest
 	{
 		try
 		{
-			assertEquals(0.0, Kugelvolumen.berechneKugelvolumen(0), 0.01);
+			Kugelvolumen.berechneKugelvolumen(0);
 			fail("Runtime exception expected.");
 		}
 		catch(RuntimeException e)
@@ -25,29 +25,13 @@ class KugelvolumenTest
 	@Test
 	void testKugelvolumenOne()
 	{
-		try
-		{
-			assertEquals(3.14, Kugelvolumen.berechneKugelvolumen(1), 0.01);
-		}
-		catch(RuntimeException e)
-		{
-			String message = e.getMessage();
-			assertEquals("Invalid Argument", message);
-		}
+		assertEquals(3.14, Kugelvolumen.berechneKugelvolumen(1), 0.01);
 	}
 	
 	@Test
 	void testKugelvolumenFive()
 	{
-		try
-		{
-			assertEquals(392.69, Kugelvolumen.berechneKugelvolumen(5), 0.01);
-		}
-		catch(RuntimeException e)
-		{
-			String message = e.getMessage();
-			assertEquals("Invalid Argument", message);
-		}
+		assertEquals(392.69, Kugelvolumen.berechneKugelvolumen(5), 0.01);
 	}
 	
 	@Test
@@ -55,7 +39,8 @@ class KugelvolumenTest
 	{
 		try
 		{
-			assertEquals(0.0, Kugelvolumen.berechneKugelvolumen(-1), 0.01);
+			Kugelvolumen.berechneKugelvolumen(-1);
+			fail("Runtime exception expected");
 		}
 		catch(RuntimeException e)
 		{
