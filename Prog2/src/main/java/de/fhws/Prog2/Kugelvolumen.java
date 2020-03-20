@@ -4,14 +4,8 @@ public class Kugelvolumen
 {
 	public static double berechneKugelvolumen(double radius)
 	{
+		if(radius < 1) throw new RuntimeException("Invalid Argument");
 		return 4/3*Math.PI*radius*radius*radius;
-	}
-	
-	public static void main(String[] args)
-	{
-		System.out.println(berechneKugelvolumen(0));
-		System.out.println(berechneKugelvolumen(1));
-		System.out.println(berechneKugelvolumen(5));
-		System.out.println(berechneKugelvolumen(-1));
+		
 	}
 }
