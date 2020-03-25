@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import de.fhws.Programmieren2.Lektion15.QuizMultipleChoiceQuestion;
+import de.fhws.Programmieren2.Lektion15.QuizTextQuestion;
+
 class QuizTest
 {
 

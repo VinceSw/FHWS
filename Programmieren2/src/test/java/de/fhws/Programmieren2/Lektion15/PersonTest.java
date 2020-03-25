@@ -3,6 +3,10 @@ package de.fhws.Programmieren2.Lektion15;
 //import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import de.fhws.Programmieren2.Lektion15.Person;
+import de.fhws.Programmieren2.Lektion15.Professor;
+import de.fhws.Programmieren2.Lektion15.Student;
+
 class PersonTest
 {
 
