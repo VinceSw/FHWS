@@ -2,18 +2,19 @@ package de.fhws.Programmieren2.Lektion15;
 
 public class Employee
 {
-	protected String name, firstname, employeeID;
+	protected String name, firstname, employeeID, birthday;
 	protected double baseSalary, salaryFactor, salary;
-	Department dept;
+	protected Department dept;
 	Employee nextEmployee;
 	
 	public Employee(Department dept, String name, String firstname, 
-			String employeeID, double baseSalary)
+			String employeeID, String birthday, double baseSalary)
 	{
 		this.dept = dept;
 		this.name = name;
 		this.firstname = firstname;
 		this.employeeID = employeeID;
+		this.birthday = birthday;
 		this.baseSalary = baseSalary;
 		this.salaryFactor = 1d;
 		calculateSalary();

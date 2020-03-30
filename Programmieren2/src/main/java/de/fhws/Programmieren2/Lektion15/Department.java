@@ -2,11 +2,11 @@ package de.fhws.Programmieren2.Lektion15;
 
 public class Department
 {
-	String deptID, description;
-	Company comp;
-	Department nextDept;
-	Employee empList;
-	HeadOfDepartment empHD;
+	protected String deptID, description;
+	protected Company comp;
+	protected Department nextDept;
+	private Employee empList;
+	private HeadOfDepartment empHD;
 	
 	public Department(Company comp, String deptID, String description)
 	{
@@ -15,10 +15,10 @@ public class Department
 		this.description = description;
 	}	
 	
-	public boolean addEmployee(String name, String firstname, String employeeID, int salary)
+	public boolean addEmployee(String name, String firstname, String employeeID, String birthday, int salary)
 	{
 		Employee temp = empList;
-		Employee newEmployee = new Employee(this, name, firstname, employeeID, salary);
+		Employee newEmployee = new Employee(this, name, firstname, employeeID, birthday, salary);
 		
 		if(empList == null)
 		{
@@ -44,10 +44,10 @@ public class Department
 		return false;
 	}
 	
-	public boolean addHeadOfDepartment(String name, String firstname, String employeeID, int salary)
+	public boolean addHeadOfDepartment(String name, String firstname, String employeeID, String birthday, int salary)
 	{
 		if(empHD != null ) throw new RuntimeException("Invalid Arguement");
-		empHD = new HeadOfDepartment(this, name, firstname, employeeID, salary);
+		empHD = new HeadOfDepartment(this, name, firstname, employeeID, birthday, salary);
 		return true;
 	}
 	

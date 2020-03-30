@@ -37,11 +37,11 @@ class CompanyTest
 	void testAddEmployee()
 	{
 		Company frw = getCompany();
-		assertTrue(frw.getDepartment("IT").addEmployee("Swigler", "Michél", "6875", 2700));
-		assertTrue(frw.getDepartment("IT").addEmployee("Korn", "Vincent", "6816", 1251));
-		assertTrue(frw.getDepartment("IT").addEmployee("Ehrlinger", "Matthias", "5578", 4300));
-		assertTrue(frw.getDepartment("PW").addEmployee("Koch", "Daniela", "6655", 3900));
-		assertTrue(frw.getDepartment("PW").addEmployee("Eidam", "Johanna", "6645", 3300));
+		assertTrue(frw.getDepartment("IT").addEmployee("Korn", "Michél", "6875", "02.07.1990", 2700));
+		assertTrue(frw.getDepartment("IT").addEmployee("Swigler", "Vincent", "6816", "10.07.1992", 1251));
+		assertTrue(frw.getDepartment("IT").addEmployee("Ehrlinger", "Matthias", "5578", "14.05.1983", 4300));
+		assertTrue(frw.getDepartment("PW").addEmployee("Koch", "Daniela", "6655", "29.12.1979", 3900));
+		assertTrue(frw.getDepartment("PW").addEmployee("Eidam", "Johanna", "6645", "17.09.2000", 3300));
 	}
 	
 	@Test
@@ -70,13 +70,13 @@ class CompanyTest
 	void testAddHeadOfDepartment()
 	{
 		Company frw = getCompany();
-		assertTrue(frw.getDepartment("IT").addHeadOfDepartment("Schuhmann", "Helmut", "8899", 7200));
-		assertTrue(frw.getDepartment("PW").addHeadOfDepartment("Haupt", "Dirk", "4423", 7500));
-		assertTrue(frw.getDepartment("HV").addHeadOfDepartment("Baunacher", "Andreas", "9753", 6600));
+		assertTrue(frw.getDepartment("IT").addHeadOfDepartment("Schuhmann", "Helmut", "8899", "02.02.1977", 7200));
+		assertTrue(frw.getDepartment("PW").addHeadOfDepartment("Haupt", "Dirk", "4423", "04.03.1992", 7500));
+		assertTrue(frw.getDepartment("HV").addHeadOfDepartment("Baunacher", "Andreas", "9753", "05.06.1989", 6600));
 		
 		try
 		{
-			frw.getDepartment("IT").addHeadOfDepartment("Berninger", "Thomas", "8899", 6800);
+			frw.getDepartment("IT").addHeadOfDepartment("Berninger", "Thomas", "8899", "11.09.1983", 6800);
 			fail("RuntimeException expected");
 		}
 		catch(RuntimeException e)
@@ -124,11 +124,11 @@ class CompanyTest
 	{
 		Company frw = getCompany();
 		
-		frw.getDepartment("IT").addEmployee("Eidam", "Michél", "6875", 2700);
-		frw.getDepartment("IT").addEmployee("Swigler", "Vincent", "6816", 1251);
-		frw.getDepartment("IT").addEmployee("Koch", "Matthias", "5578", 4300);
-		frw.getDepartment("PW").addEmployee("Ehrlinger", "Daniela", "6655", 3900);
-		frw.getDepartment("PW").addEmployee("Korn", "Johanna", "6645", 3300);
+		frw.getDepartment("IT").addEmployee("Korn", "Michél", "6875", "02.07.1990", 2700);
+		frw.getDepartment("IT").addEmployee("Swigler", "Vincent", "6816", "10.07.1992", 1251);
+		frw.getDepartment("IT").addEmployee("Ehrlinger", "Matthias", "5578", "14.05.1983", 4300);
+		frw.getDepartment("PW").addEmployee("Koch", "Daniela", "6655", "29.12.1979", 3900);
+		frw.getDepartment("PW").addEmployee("Eidam", "Johanna", "6645", "17.09.2000", 3300);
 		
 		return frw;
 	}
@@ -137,9 +137,9 @@ class CompanyTest
 	{
 		Company frw = getCompanyWithEmployee();
 		
-		frw.getDepartment("IT").addHeadOfDepartment("Schuhmann", "Helmut", "8899", 7200);
-		frw.getDepartment("PW").addHeadOfDepartment("Haupt", "Dirk", "8899", 7500);
-		frw.getDepartment("HV").addHeadOfDepartment("Baunacher", "Andreas", "8899", 6600);
+		frw.getDepartment("IT").addHeadOfDepartment("Schuhmann", "Helmut", "8899", "02.02.1977", 7200);
+		frw.getDepartment("PW").addHeadOfDepartment("Haupt", "Dirk", "4423", "04.03.1992", 7500);
+		frw.getDepartment("HV").addHeadOfDepartment("Baunacher", "Andreas", "9753", "05.06.1989", 6600);
 		
 		return frw;
 	}

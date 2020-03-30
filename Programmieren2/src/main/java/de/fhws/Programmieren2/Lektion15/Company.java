@@ -2,7 +2,7 @@ package de.fhws.Programmieren2.Lektion15;
 
 public class Company
 {
-	String name;
+	protected String name;
 	private Department deptList;
 	
 	public Company(String name)
