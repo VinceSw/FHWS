@@ -26,8 +26,8 @@ public class TurmImpl extends AbstractFigur implements Turm
     {
       for (int i = 1; i <= 8; i++)
       {
-        if (brett.gibFeld(i, j)) System.out.print("x");
-        else System.out.print("o");
+        if (brett.gibFeld(i, j)) System.out.print("x ");
+        else System.out.print("o ");
       }
       System.out.println();
     }
