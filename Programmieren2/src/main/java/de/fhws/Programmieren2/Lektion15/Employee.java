@@ -17,16 +17,10 @@ public class Employee
 		this.birthday = birthday;
 		this.baseSalary = baseSalary;
 		this.salaryFactor = 1d;
-		calculateSalary();
+		this.salary = baseSalary * salaryFactor;
 	}	
 	
-	public void calculateSalary()
-	{
-		this.salary = baseSalary * salaryFactor;
-	}
-
-	
-	/**
+		/**
 	 * @return the name
 	 */
 	public String getName()
@@ -34,7 +28,30 @@ public class Employee
 		return name;
 	}
 
-	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public void setBaseSalary(double baseSalary)
+	{
+		this.baseSalary = baseSalary;
+	}
+
+	public void setSalaryFactor(double salaryFactor)
+	{
+		this.salaryFactor = salaryFactor;
+	}
+
+	public void setSalary()
+	{
+		this.salary = this.baseSalary * this.salaryFactor;
+	}
+
+	public void setDept(Department dept)
+	{
+		this.dept = dept;
+	}
 
 	/**
 	 * @return the firstname
@@ -43,8 +60,11 @@ public class Employee
 	{
 		return firstname;
 	}
-
 	
+	public void setFirstname(String firstname)
+	{
+		this.firstname = firstname;
+	}
 
 	/**
 	 * @return the employeeID
@@ -54,8 +74,6 @@ public class Employee
 		return employeeID;
 	}
 
-	
-
 	/**
 	 * @return the baseSalary
 	 */
@@ -63,18 +81,14 @@ public class Employee
 	{
 		return baseSalary;
 	}
-
 	
-
 	/**
 	 * @return the salaryFactor
 	 */
 	public double getSalaryFactor()
 	{
 		return salaryFactor;
-	}
-
-	
+	}	
 
 	/**
 	 * @return the salary
@@ -83,8 +97,6 @@ public class Employee
 	{
 		return salary;
 	}
-
-	
 
 	/**
 	 * @return the dept

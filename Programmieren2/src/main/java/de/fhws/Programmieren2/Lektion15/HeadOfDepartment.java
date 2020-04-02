@@ -14,6 +14,6 @@ public class HeadOfDepartment extends Employee
 		Employee emp = dept.getEmployee(employeeID);
 
 		emp.salaryFactor *= 1.1d;
-		emp.calculateSalary();
+		emp.setSalary();
 	}
 }
