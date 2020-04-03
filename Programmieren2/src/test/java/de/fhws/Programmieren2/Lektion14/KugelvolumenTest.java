@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import de.fhws.Programmieren2.Lektion14.Kugelvolumen;
-
 class KugelvolumenTest
 {
 
