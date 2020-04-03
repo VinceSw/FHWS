@@ -11,8 +11,8 @@ class ModifiedChangeCalculatorTest
 	void test()
 	{
 		ModifiedChangeCalculator test = new ModifiedChangeCalculator();
-		int[] expectedArray = {0, 0, 0, 0, 1, 0, 1, 2};
-		assertArrayEquals(expectedArray, test.getChange(5, 20));
+		int[] expectedArray = {0, 0, 0, 1, 0, 0, 0, 2};
+		assertArrayEquals(expectedArray, test.getChange(4, 10));
 	}
 
 }
