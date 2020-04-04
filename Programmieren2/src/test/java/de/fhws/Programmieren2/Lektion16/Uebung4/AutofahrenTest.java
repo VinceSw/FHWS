@@ -13,63 +13,64 @@ class AutofahrenTest
 	{
 		Roboter r = new Roboter();
 		
-		Gefahrensituation gefahr = Gefahrensituation.GEFAHR_LINKS;
-		assertEquals(Reaktion.RECHTS, r.autofahren(gefahr));
-		
-		gefahr = Gefahrensituation.GEFAHR_RECHTS;
-		assertEquals(Reaktion.LINKS, r.autofahren(gefahr));
-		
-		gefahr = Gefahrensituation.GEFAHR_VORNE;
-		assertEquals(Reaktion.BREMSEN, r.autofahren(gefahr));
-		
-		gefahr = null;
-		assertEquals(null, r.autofahren(gefahr));
+		testReaction(r);
 	}
 	
 	@Test
 	void testHumanReaction()
 	{
 		Mensch m = new Mensch();
-		ArrayList<Reaktion> reactionList = new ArrayList<Reaktion>();
 		
-		reactionList.add(Reaktion.UNENTSCHIEDEN);
-		reactionList.add(Reaktion.RECHTS);
-		Gefahrensituation gefahr = Gefahrensituation.GEFAHR_LINKS;
-		assertTrue(reactionList.contains(m.autofahren(gefahr)));
-		
-		reactionList.set(1, Reaktion.LINKS);
-		gefahr = Gefahrensituation.GEFAHR_RECHTS;
-		assertTrue(reactionList.contains(m.autofahren(gefahr)));
-		
-		reactionList.set(1, Reaktion.BREMSEN);
-		gefahr = Gefahrensituation.GEFAHR_VORNE;
-		assertTrue(reactionList.contains(m.autofahren(gefahr)));
-		
-		gefahr = null;
-		assertEquals(null, m.autofahren(gefahr));
+		testReaction(m);
 	}
 	
 	@Test
 	void testCyborgReaction()
 	{
 		Cyborg c = new Cyborg();
-		ArrayList<Reaktion> reactionList = new ArrayList<Reaktion>();
 		
-		reactionList.add(Reaktion.UNENTSCHIEDEN);
-		reactionList.add(Reaktion.RECHTS);
-		Gefahrensituation gefahr = Gefahrensituation.GEFAHR_LINKS;
-		assertTrue(reactionList.contains(c.autofahren(gefahr)));
+		testReaction(c);
 		
-		reactionList.set(1, Reaktion.LINKS);
-		gefahr = Gefahrensituation.GEFAHR_RECHTS;
-		assertTrue(reactionList.contains(c.autofahren(gefahr)));
+	}
+	
+	public void testReaction(IHumanoide humanoid)
+	{
+		Gefahrensituation gefahr;
 		
-		reactionList.set(1, Reaktion.BREMSEN);
-		gefahr = Gefahrensituation.GEFAHR_VORNE;
-		assertTrue(reactionList.contains(c.autofahren(gefahr)));
-		
-		gefahr = null;
-		assertEquals(null, c.autofahren(gefahr));
+		if(humanoid instanceof Roboter)
+		{
+			gefahr = Gefahrensituation.GEFAHR_LINKS;
+			assertEquals(Reaktion.RECHTS, humanoid.autofahren(gefahr));
+			
+			gefahr = Gefahrensituation.GEFAHR_RECHTS;
+			assertEquals(Reaktion.LINKS, humanoid.autofahren(gefahr));
+			
+			gefahr = Gefahrensituation.GEFAHR_VORNE;
+			assertEquals(Reaktion.BREMSEN, humanoid.autofahren(gefahr));
+			
+			gefahr = null;
+			assertEquals(null, humanoid.autofahren(gefahr));
+		}
+		else
+		{
+			ArrayList<Reaktion> reactionList = new ArrayList<Reaktion>();
+			
+			reactionList.add(Reaktion.UNENTSCHIEDEN);
+			reactionList.add(Reaktion.RECHTS);
+			gefahr = Gefahrensituation.GEFAHR_LINKS;
+			assertTrue(reactionList.contains(humanoid.autofahren(gefahr)));
+			
+			reactionList.set(1, Reaktion.LINKS);
+			gefahr = Gefahrensituation.GEFAHR_RECHTS;
+			assertTrue(reactionList.contains(humanoid.autofahren(gefahr)));
+			
+			reactionList.set(1, Reaktion.BREMSEN);
+			gefahr = Gefahrensituation.GEFAHR_VORNE;
+			assertTrue(reactionList.contains(humanoid.autofahren(gefahr)));
+			
+			gefahr = null;
+			assertEquals(null, humanoid.autofahren(gefahr));
+		}
 	}
 
 
