@@ -38,6 +38,7 @@ public class Mensch implements IMensch
 	public Reaktion entscheide(Gefahrensituation gefahr)
 	{
 		Reaktion reaktion;
+		//Ermitteln ob der Mensch reagiert 
 		Random random = new Random();
 		boolean isDetermined = (random.nextFloat() > 0.24f);
 		

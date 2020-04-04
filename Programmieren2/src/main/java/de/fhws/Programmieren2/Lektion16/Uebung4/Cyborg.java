@@ -45,6 +45,7 @@ public class Cyborg implements IMensch, IRoboter
 		return reaktion;
 	}
 	
+	//Kombinierte Entscheidung der Klassen Mensch und Roboter
 	public Reaktion entscheide(Gefahrensituation gefahr)
 	{
 		Mensch m = new Mensch();
@@ -59,6 +60,7 @@ public class Cyborg implements IMensch, IRoboter
 		}
 		else
 		{
+			//Zufällige Entscheidung zwischen menschlicher und robotischer Reaktion
 			Random random = new Random();
 			if(random.nextFloat() > 0.49f)
 			{
