@@ -22,7 +22,7 @@ public class ZeitmessungStreams
 		{
 			getInput(provider);
 			
-			copyWasSuccessful = unbufferedCopy(fileSourcePath, fileDestPath);
+			copyWasSuccessful = copyFile(fileSourcePath, fileDestPath);
 			
 			//check which method was faster if both of them where successful
 			if(copyWasSuccessful)
@@ -50,7 +50,7 @@ public class ZeitmessungStreams
 		fileDestPath = provider.nextLine();
 	}
 		
-	public boolean unbufferedCopy(String fileSourcePath, String fileDestPath)
+	public boolean copyFile(String fileSourcePath, String fileDestPath)
 	{
 		long startTime, endTime;
 		boolean isSuccessfull = true;
@@ -62,12 +62,12 @@ public class ZeitmessungStreams
 				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(fileDestPath));)
 		{
 			startTime = System.currentTimeMillis();
-			copyFile(fis, fos);
+			copyStream(fis, fos);
 			endTime = System.currentTimeMillis();
 			unbufferedDuration = endTime - startTime;
 			
 			startTime = System.currentTimeMillis();
-			copyFile(bis, bos);
+			copyStream(bis, bos);
 			endTime = System.currentTimeMillis();
 			bufferedDuration = endTime - startTime;
 		}
@@ -86,7 +86,7 @@ public class ZeitmessungStreams
 	}
 		
 	//Overloaded copyFile method for copying with general Input- and OutputStream
-	private void copyFile(InputStream is, OutputStream os) throws IOException
+	private void copyStream(InputStream is, OutputStream os) throws IOException
 	{
 		byte[] b = new byte[4096];
 		int n;
