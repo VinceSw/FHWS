@@ -21,7 +21,8 @@ class AutofahrenTest
 	{
 		Mensch m = new Mensch();
 		
-		testReaction(m);
+			testReaction(m);
+
 	}
 	
 	@Test
