@@ -73,7 +73,7 @@ public class Studiengangssplitter
 		
 		try(BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath, true), StandardCharsets.UTF_8));)
 		{
-			bw.write(matNr.toCharArray(), 0, String.valueOf(matNr).length());
+			bw.write(matNr);
 			bw.newLine();
 		}
 		catch(IOException e)
