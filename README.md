@@ -1,2 +1,0 @@
-# FHWS
-Informatik
