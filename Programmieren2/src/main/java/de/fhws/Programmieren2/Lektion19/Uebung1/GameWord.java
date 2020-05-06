@@ -1,7 +1,5 @@
 package de.fhws.Programmieren2.Lektion19.Uebung1;
 
-import java.util.Arrays;
-
 public class GameWord
 {
 	private char[] soughtValue;

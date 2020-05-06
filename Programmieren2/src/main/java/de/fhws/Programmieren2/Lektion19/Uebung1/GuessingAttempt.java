@@ -8,7 +8,7 @@ public class GuessingAttempt implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 133961183263645782L;
-	char guessedLetter;
+	private char guessedLetter;
 	
 	public GuessingAttempt(char guessedLetter)
 	{

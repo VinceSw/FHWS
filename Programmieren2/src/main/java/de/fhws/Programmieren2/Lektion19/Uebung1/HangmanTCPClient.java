@@ -1,6 +1,7 @@
 package de.fhws.Programmieren2.Lektion19.Uebung1;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.Socket;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -11,18 +12,18 @@ import java.io.BufferedWriter;
 
 public class HangmanTCPClient
 {
-	//private static GameData gameWord;
+	private static GameData gameWord;
 	
 	public static void main(String[] args)
 	{
 		boolean activeGame = true; 
 		final String HOST = "localhost";
 		final int PORT = 5000;
-		GameData gameWord = new GameData();
 		
 		System.out.println("Initializing Connection...");
 		try(Socket connection = new Socket(HOST, PORT);
-				ObjectInputStream ois = new ObjectInputStream(connection.getInputStream());
+				InputStream is = connection.getInputStream();
+				ObjectInputStream ois = new ObjectInputStream(is);
 				BufferedReader terminalInput = new BufferedReader(new InputStreamReader(System.in));
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
 				ObjectOutputStream oos = new ObjectOutputStream(connection.getOutputStream());)
@@ -31,16 +32,14 @@ public class HangmanTCPClient
 			
 			while(activeGame)
 			{
-				gameWord = contactServerIn(ois, gameWord);
-				wordOutput(String.copyValueOf(gameWord.getAnonymizedWord()));
-				play(ois, terminalInput, oos, gameWord);
+				play(ois, terminalInput, oos);
 				
 				System.out.print("Do you want to play again? (y/n): ");
-				String answer = terminalInput.readLine();
+				String answer = terminalInput.readLine().toUpperCase();
 				bw.write(answer + "\n");
 				bw.flush();
 				
-				activeGame = answer.toUpperCase().equals("Y");
+				activeGame = answer.equals("Y");
 			}
 			
 		}
@@ -50,25 +49,32 @@ public class HangmanTCPClient
 		}
 	}
 	
-	public static void play(ObjectInputStream ois, BufferedReader terminalInput, ObjectOutputStream oos, GameData gameWord) throws IOException
+	public static void play(ObjectInputStream ois, BufferedReader terminalInput, ObjectOutputStream oos) throws IOException, ClassNotFoundException
 	{
-		String result = "";
+		String result = "", anonWord = "";
+		
+		
+		contactServerIn(ois);
+		anonWord = String.valueOf(HangmanTCPClient.gameWord.getAnonymizedWord());
+		wordOutput(anonWord);
 		
 		while(!gameWord.isGameWon() && !gameWord.isGameLost())
 		{
 			contactServerOut(terminalInput, oos);
-			gameWord = contactServerIn(ois, gameWord);
-			wordOutput(String.valueOf(gameWord.getAnonymizedWord()));
+			gameWord = (GameData)ois.readObject();
+			
 			
 			if(gameWord.isCorrect())
 			{
 				if(gameWord.isGameWon())
 				{
 					result = "won";
+					break;
 				}
 				else if(gameWord.isGameLost())
 				{
 					result = "lost";
+					break;
 				}
 				else
 				{
@@ -97,7 +103,8 @@ public class HangmanTCPClient
 		}
 	}
 	
-	public static GameData contactServerIn(ObjectInputStream ois, GameData gameWord)
+	
+	public static void contactServerIn(ObjectInputStream ois)
 	{
 		try
 		{
@@ -111,8 +118,6 @@ public class HangmanTCPClient
 		{
 			e.printStackTrace();
 		}
-		
-		return gameWord;
 	}
 	
 	public static void wordOutput(String word)
