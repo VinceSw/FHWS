@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="FHWS/Programmieren1/src"/>
+	<classpathentry kind="src" path="FHWS/Programmieren2/src/main/java"/>
+	<classpathentry kind="src" path="FHWS/Programmieren2/src/test/java"/>
+	<classpathentry kind="src" path="FHWS/SoftwareEngineering1/OwnSource"/>
+	<classpathentry kind="src" path="FHWS/SoftwareEngineering1/src/main/java"/>
+	<classpathentry kind="src" path="FHWS/SoftwareEngineering1/src/test/java"/>
+	<classpathentry kind="src" path="Programmieren1/src"/>
+	<classpathentry kind="src" path="Programmieren2/src/main/java"/>
+	<classpathentry kind="src" path="Programmieren2/src/test/java"/>
+	<classpathentry kind="src" path="SoftwareEngineering1/OwnSource"/>
+	<classpathentry kind="src" path="SoftwareEngineering1/src/main/java"/>
+	<classpathentry kind="src" path="SoftwareEngineering1/src/test/java"/>
+	<classpathentry kind="output" path="Programmieren1/bin"/>
+</classpath>
