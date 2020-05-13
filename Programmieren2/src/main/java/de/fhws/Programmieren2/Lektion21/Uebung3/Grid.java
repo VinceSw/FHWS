@@ -14,7 +14,8 @@ public class Grid<E>
 		this.root = root;
 		this.maxLengthString = maxLengthString;
 	}
-	private void generateGrid(Node<E> root)
+	
+	public void generateGrid(Node<E> root)
 	{
 		getGridDimension(root);
 		//multiplying length to leave a little space in the grid for connectors
@@ -32,6 +33,7 @@ public class Grid<E>
 			grid = new String[y][y];
 		}
 	}
+	
 	private void getGridDimension(Node<E> root)
 	{
 		int y = getHeightOfTree(root);

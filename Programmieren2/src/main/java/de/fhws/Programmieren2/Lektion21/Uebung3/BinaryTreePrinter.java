@@ -3,7 +3,6 @@ package de.fhws.Programmieren2.Lektion21.Uebung3;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import de.fhws.Programmieren2.Lektion21.Uebung3.
 
 
 public class BinaryTreePrinter<E> extends Binarytree<E>
@@ -18,8 +17,8 @@ public class BinaryTreePrinter<E> extends Binarytree<E>
 		
 		if(binaryTree != null)
 		{
-			
-			generateGrid(root);
+			Grid<E> gridCls = new Grid<>(root, maxLengthString);
+			gridCls.generateGrid(root);
 			
 			fillGrid(root);
 		}
