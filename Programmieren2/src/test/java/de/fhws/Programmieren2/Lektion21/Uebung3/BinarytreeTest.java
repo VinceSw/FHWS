@@ -29,4 +29,28 @@ class BinarytreeTest
 		
 		bt.printBinarytree();
 	}
+	
+	@Test
+	void test2()
+	{
+		Binarytree<Integer> bt = new Binarytree<>();
+		Binarytree.Node<Integer> i1 = new Binarytree.Node<Integer>(1);
+		Binarytree.Node<Integer> i2 = new Binarytree.Node<Integer>(2);
+		Binarytree.Node<Integer> i3 = new Binarytree.Node<Integer>(5);
+		Binarytree.Node<Integer> i4 = new Binarytree.Node<Integer>(13);
+		Binarytree.Node<Integer> i5 = new Binarytree.Node<Integer>(3);
+		Binarytree.Node<Integer> i6 = new Binarytree.Node<Integer>(9);
+		Binarytree.Node<Integer> i7 = new Binarytree.Node<Integer>(2082019);
+		
+		
+		bt.addNode(i1);
+		bt.addNode(i4);
+		bt.addNode(i3);
+		bt.addNode(i2);
+		bt.addNode(i5);
+		bt.addNode(i7);
+		bt.addNode(i6);
+		
+		bt.printBinarytree();
+	}
 }
