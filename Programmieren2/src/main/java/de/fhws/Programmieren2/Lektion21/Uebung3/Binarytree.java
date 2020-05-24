@@ -1,6 +1,5 @@
 package de.fhws.Programmieren2.Lektion21.Uebung3;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,22 +7,22 @@ import java.util.Map;
 
 public class Binarytree<E>
 {
-	Node<E> start;
-	Map<Integer, Collection<Node<E>>> levelDepth = new HashMap<>();
+	Node<E> root;
+	ArrayList<Node<E>> nodeList = new ArrayList<>();
 
 	public Node<E> getRoot()
 	{
-		return start;
+		return root;
 	}
 	
 	public void addNode(Node<E> n)
 	{
-		Node<E> tempNode = start;
+		Node<E> tempNode = root;
 		do
 		{
-			if (start == null)
+			if (root == null)
 			{
-				start = n;
+				root = n;
 			}
 			else
 			{
@@ -34,6 +33,7 @@ public class Binarytree<E>
 					if (tempNode.getLeft() == null)
 					{
 						tempNode.addLeft(n);
+						addToList(tempNode);
 						break;
 					}
 					else
@@ -46,6 +46,7 @@ public class Binarytree<E>
 					if (tempNode.getRight() == null)
 					{
 						tempNode.addRight(n);
+						addToList(tempNode);
 						break;
 					}
 					else
@@ -62,16 +63,16 @@ public class Binarytree<E>
 		while (tempNode != null);
 	}
 
-	public void mapBinarytree(Node<E> node, int level)
-	{
-		if (node.getLeft() != null)
-			mapBinarytree(node.getLeft(), ++level);
-		if (node.getRight() != null)
-			mapBinarytree(node.getRight(), ++level);
-
-		addToLevel(getLevel(start, node.getValue(), 1), node);
-		level--;
-	}
+//	public void mapBinarytree(Node<E> node, int level)
+//	{
+//		if (node.getLeft() != null)
+//			mapBinarytree(node.getLeft(), ++level);
+//		if (node.getRight() != null)
+//			mapBinarytree(node.getRight(), ++level);
+//
+//		addToList(node);
+//		level--;
+//	}
 
 	public int getLevel(Node<E> root, E key, int level)
 	{
@@ -87,206 +88,158 @@ public class Binarytree<E>
 		return result;
 	}
 
-	private void addToLevel(int level, Node<E> n)
+	private void addToList(Node<E> n)
 	{
-		Integer levelObj = Integer.valueOf(level);
-		ArrayList<Node<E>> nodeCollection;
-		if (levelDepth.containsKey(levelObj))
+		if (!nodeList.contains(n))
 		{
-			nodeCollection = (ArrayList<Node<E>>) levelDepth.get(levelObj);
-			nodeCollection.add(n);
-			levelDepth.put(levelObj, nodeCollection);
-		}
-		else
-		{
-			nodeCollection = new ArrayList<Node<E>>();
-			nodeCollection.add(n);
-			levelDepth.put(levelObj, nodeCollection);
+			nodeList.add(n);
 		}
 	}
 
-	public void printFromLeftToRight(Node<E> node, int level)
+	public int getHeightOfTree()
+	{
+		return traverseTree(root);
+	}
+	
+	private int traverseTree(Node<E> node)
 	{
 		if(node == null)
-			return;
+			return 0;
 		
-		if(level == 1)
-			System.out.println(node.getValue() + " ");
-		else if(level > 1)
-		{
-			printFromLeftToRight(node.getLeft(), level--);
-			printFromLeftToRight(node.getRight(), level--);
-		}
+		int leftDepth = traverseTree(node.getLeft());
+		int rightDepth = traverseTree(node.getRight());
+		
+		if(leftDepth > rightDepth)
+			return (++leftDepth);
+		else
+			return (++rightDepth);
 	}
-
-	private int getMaxWidthOfMap()
-	{
-		int oldSize = 0, newSize = 0;
-
-		for (Integer i : levelDepth.keySet())
-		{
-			newSize = levelDepth.get(i).size();
-			if (oldSize < newSize)
-				oldSize = newSize;
-		}
-
-		return oldSize;
-	}
+	
 
 	public void printBinarytree()
 	{
-		mapBinarytree(start, 1);
-		StringBuilder sb = new StringBuilder();
+//		mapBinarytree(root, 1);
+//		StringBuilder sb = new StringBuilder();
+//
+//		String tabs = getTabs(levelDepth.size());
+//		for (Integer i : levelDepth.keySet())
+//		{
+//			// ----------------- Initializing---------------------------
+//			ArrayList<Node<E>> collection = (ArrayList<Node<E>>) levelDepth.get(i);
+//			int collSize = collection.size();
+//			String treeConnectorUpperPart = "";
+//			String treeConnectorUnderPart = "";
+//			// ---------------------------------------------------------
+//
+//			// ----------------- Appending -----------------------------
+//			for (int j = 0; j < collSize; j++)
+//			{
+//				if (j % 2 != 0)
+//				{
+//					sb.append("\t" + collection.get(j).getValue());
+//				}
+//				else
+//				{
+//					if (j == 0)
+//						sb.append(tabs + collection.get(j).getValue());
+//					else
+//						sb.append("\t" + collection.get(j).getValue());
+//				}
+//
+//				if (collection.get(j).hasLeftAndRight())
+//				{
+//					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
+//					// treeConnectorUpperPart, "______|________",
+//					// tabs);
+//					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
+//					// treeConnectorUnderPart, "| |",
+//					// tabs);
+//					treeConnectorUpperPart = tabs + "/\t\\\n";
+//					tabs = getTabs(tabs.length() - 1);
+//
+//				}
+//				else if (collection.get(j).hasLeft())
+//				{
+//					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
+//					// treeConnectorUpperPart, "______|", tabs);
+//					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
+//					// treeConnectorUnderPart, "______|", tabs);
+//					treeConnectorUpperPart = tabs + "/\n";
+//					tabs = getTabs(tabs.length() - 1);
+//
+//				}
+//				else if (collection.get(j).hasRight())
+//				{
+//					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
+//					// treeConnectorUpperPart, "|__________", tabs);
+//					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
+//					// treeConnectorUnderPart, "\t |", tabs);
+//					treeConnectorUpperPart = tabs + "\t\\\n";
+//					tabs = getTabs(tabs.length() + 1);
+//				}
+//			}
+//			sb.append("\n");
+//			sb.append(treeConnectorUpperPart);
+//			// sb.append(treeConnectorUnderPart);
 
-		String tabs = getTabs(levelDepth.size());
-		for (Integer i : levelDepth.keySet())
-		{
-			// ----------------- Initializing---------------------------
-			ArrayList<Node<E>> collection = (ArrayList<Node<E>>) levelDepth.get(i);
-			int collSize = collection.size();
-			String treeConnectorUpperPart = "";
-			String treeConnectorUnderPart = "";
 			// ---------------------------------------------------------
-
-			// ----------------- Appending -----------------------------
-			for (int j = 0; j < collSize; j++)
-			{
-				if (j % 2 != 0)
-				{
-					sb.append("\t" + collection.get(j).getValue());
-				}
-				else
-				{
-					if (j == 0)
-						sb.append(tabs + collection.get(j).getValue());
-					else
-						sb.append("\t" + collection.get(j).getValue());
-				}
-
-				if (collection.get(j).hasLeftAndRight())
-				{
-					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
-					// treeConnectorUpperPart, "______|________",
-					// tabs);
-					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
-					// treeConnectorUnderPart, "| |",
-					// tabs);
-					treeConnectorUpperPart = tabs + "/\t\\\n";
-					tabs = getTabs(tabs.length() - 1);
-
-				}
-				else if (collection.get(j).hasLeft())
-				{
-					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
-					// treeConnectorUpperPart, "______|", tabs);
-					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
-					// treeConnectorUnderPart, "______|", tabs);
-					treeConnectorUpperPart = tabs + "/\n";
-					tabs = getTabs(tabs.length() - 1);
-
-				}
-				else if (collection.get(j).hasRight())
-				{
-					// treeConnectorUpperPart = buildUpperTreeConnector(j, collSize,
-					// treeConnectorUpperPart, "|__________", tabs);
-					// treeConnectorUnderPart = buildUnderTreeConnector(j, collSize,
-					// treeConnectorUnderPart, "\t |", tabs);
-					treeConnectorUpperPart = tabs + "\t\\\n";
-					tabs = getTabs(tabs.length() + 1);
-				}
-			}
-			sb.append("\n");
-			sb.append(treeConnectorUpperPart);
-			// sb.append(treeConnectorUnderPart);
-
-			// ---------------------------------------------------------
 		}
 
-		// ----------------- Printing --------------------------
-		PrintStream os = new PrintStream(System.out);
-		os.print(sb.toString());
-	}
+//		// ----------------- Printing --------------------------
+//		PrintStream os = new PrintStream(System.out);
+//		os.print(sb.toString());
+//	}
 
-	String buildUpperTreeConnector(int j, int collSize, String existingDesign,
-			String upperDesign, String tabs)
+	public int getMaxWidthOfTree(Node<E> root, int heightOfTree)
 	{
-		String upperPart = "";
+		Node<E> node = root;
+		int maxWidth = 0, newWidth = 0;
+		int h = heightOfTree;
 
-		if (j == 0)
+		for(int i = 1; i <= h; i++)
 		{
-			if (j < collSize - 1)
-			{
-				upperPart = tabs + upperDesign;
-			}
-			else
-			{
-				upperPart = tabs + upperDesign;
-			}
+			newWidth = getWidthOfLevel(node, i);
+			if(newWidth > maxWidth)
+				maxWidth = newWidth;
 		}
-		else
-		{
-			if (j < collSize - 1)
-			{
-				upperPart += tabs + upperDesign;
-			}
-			else
-			{
-				upperPart += "\t" + upperDesign;
-			}
-		}
-
-		existingDesign += upperPart;
-		return existingDesign;
+		
+		return maxWidth;
 	}
-
-	String buildUnderTreeConnector(int j, int collSize, String existingDesign,
-			String underDesign, String tabs)
+	
+	private int getWidthOfLevel(Node<E> node, int level)
 	{
-		String underPart = "";
-
-		if (j == 0)
-		{
-			if (j < collSize - 1)
-			{
-				underPart = "\n" + tabs + underDesign;
-			}
-			else
-			{
-				underPart = "\n" + tabs + underDesign + "\n";
-			}
-		}
-		else
-		{
-			if (j < collSize - 1)
-			{
-				underPart += tabs + underDesign;
-			}
-			else
-			{
-				underPart += "\t" + underDesign + "\n";
-			}
-		}
-
-		existingDesign += underPart;
-		return existingDesign;
-	}
-
-	private String getTabs(int counter)
-	{
-		String result = "";
-
-		for (int i = 0; i < counter; i++)
-		{
-			result += "\t";
-		}
-		return result;
+		if(node == null)
+			return 0;
+		
+		if(level == 1)
+			return 1;
+		else if(level > 1)
+			return getWidthOfLevel(node.getLeft(), level-1) + getWidthOfLevel(node.getRight(), level-1);
+		
+		return 0;
 	}
 
 	public static class Node<T> implements Comparable<Node<T>>
 	{
 		private T value;
 		private Node<T> left, right;
+		private PairOfInts coordinatesInTree;
 
+		public PairOfInts getCoordinatesInTree()
+		{
+			return coordinatesInTree;
+		}
+
+		public void setCoordinatesInTree(PairOfInts coordinatesInTree)
+		{
+			this.coordinatesInTree = coordinatesInTree;
+		}
+
+		public void setCoordinatesInTree(int x, int y)
+		{
+			this.coordinatesInTree = new PairOfInts(x, y);
+		}
+		
 		public Node(T obj)
 		{
 			this.value = obj;

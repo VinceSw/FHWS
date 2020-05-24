@@ -1,5 +1,10 @@
 package de.fhws.Programmieren2.Lektion21.Uebung3;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 //import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -7,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class BinaryTreePrinterTest
 {
 
-	@Test
+	//@Test
 	void test()
 	{
 		Binarytree<Person> bt = new Binarytree<>();
@@ -29,12 +34,12 @@ class BinaryTreePrinterTest
 		bt.addNode(p6);
 		bt.addNode(p8);
 		
-		BinaryTreePrinter<Person> binTreePrinter = new BinaryTreePrinter<>();
+		BinaryTreePrinter<Person> binTreePrinter = new BinaryTreePrinter<>(bt);
 		binTreePrinter.printOnSystemIn(bt);
 	}
 
 	
-	//@Test
+	@Test
 	void test2()
 	{
 		Binarytree<Integer> tree = new Binarytree<>(); 
@@ -52,14 +57,14 @@ class BinaryTreePrinterTest
       
        
        
-      Binarytree.Node<Integer> i1 = new Binarytree.Node<Integer>(5);
+      Binarytree.Node<Integer> i1 = new Binarytree.Node<Integer>(1);
       Binarytree.Node<Integer> i2 = new Binarytree.Node<Integer>(2); 
-      Binarytree.Node<Integer> i3 = new Binarytree.Node<Integer>(1); 
+      Binarytree.Node<Integer> i3 = new Binarytree.Node<Integer>(3); 
       Binarytree.Node<Integer> i4 = new Binarytree.Node<Integer>(4);
-      Binarytree.Node<Integer> i5 = new Binarytree.Node<Integer>(3);
-      Binarytree.Node<Integer> i6 = new Binarytree.Node<Integer>(8); 
-      Binarytree.Node<Integer> i7 = new Binarytree.Node<Integer>(6); 
-      Binarytree.Node<Integer> i8 = new Binarytree.Node<Integer>(7);
+      Binarytree.Node<Integer> i5 = new Binarytree.Node<Integer>(5);
+      Binarytree.Node<Integer> i6 = new Binarytree.Node<Integer>(6); 
+      Binarytree.Node<Integer> i7 = new Binarytree.Node<Integer>(7); 
+      Binarytree.Node<Integer> i8 = new Binarytree.Node<Integer>(8);
       Binarytree.Node<Integer> i9 = new Binarytree.Node<Integer>(9);
       
       
@@ -73,7 +78,7 @@ class BinaryTreePrinterTest
       tree.addNode(i8);
       tree.addNode(i9);
  
-      BinaryTreePrinter<Integer> binTreePrinter = new BinaryTreePrinter<>();
+      BinaryTreePrinter<Integer> binTreePrinter = new BinaryTreePrinter<>(tree);
 		binTreePrinter.printOnSystemIn(tree);
   } 
 }

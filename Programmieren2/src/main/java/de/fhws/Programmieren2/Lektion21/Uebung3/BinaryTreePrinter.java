@@ -7,9 +7,14 @@ import java.util.Map;
 
 public class BinaryTreePrinter<E> extends Binarytree<E>
 {
-	private Map<PairOfInts, E> nodeToFieldMap;
-	private String[][] grid;
+	Binarytree<E> binaryTree;
+//	private Map<PairOfInts, E> nodeToFieldMap;
 	private int maxLengthString;
+	
+	public BinaryTreePrinter(Binarytree<E> binTree)
+	{
+		this.binaryTree = binTree;
+	}
 	
 	public void printOnSystemIn(Binarytree<E> binaryTree)
 	{
@@ -17,27 +22,96 @@ public class BinaryTreePrinter<E> extends Binarytree<E>
 		
 		if(binaryTree != null)
 		{
-			Grid<E> gridCls = new Grid<>(root, maxLengthString);
-			gridCls.generateGrid(root);
+			Grid<E> gridCls = new Grid<E>(binaryTree, maxLengthString);
+			gridCls.generateGrid(binaryTree);
 			
-			fillGrid(root);
+			fillGrid(root, gridCls);
 		}
 	}
 	
-	private void fillGrid(Node<E> node)
+	private void fillGrid(Node<E> root, Grid<E> gridCls)
 	{
-		for(String[] row : grid)
-		{
-			Arrays.fill(row, getWhitespaces());
-		}
+//		for(String[] row : grid)
+//		{
+//			Arrays.fill(row, getWhitespaces(root));
+//		}
 		
-		nodeToFieldMap = new HashMap<>();
-		getNodeCoordinates(node, 1);
+//		nodeToFieldMap = new HashMap<>();
+		setNodeCoordinates(root, 1, 0, 0);
+		fill(root, gridCls);
+		System.out.println();
 	}
 	
-	private String getWhitespaces()
+	private void fill(Node<E> node, Grid<E> gridCls)
+	{
+		int gridHeigth = gridCls.grid.length;
+		
+		for(int i = 0; i < gridHeigth; i++)
+		{
+			int gridWidth = gridCls.grid[i].length;
+			for(int j = 0; j < gridWidth; j++)
+			{
+				PairOfInts coordinates = new PairOfInts(j, i);
+				Node<E> n = getNodeIfExists(node, coordinates);
+				
+				if(n != null)
+				{
+					gridCls.fillField(n.getValue().toString(), coordinates);
+					
+					if(n.hasLeftAndRight())
+						printBothConnector(n, coordinates, gridCls);
+					else if(n.hasLeft())
+						printLeftConnector(n, coordinates, gridCls);
+					else if(n.hasRight())
+						printRightConnector(n, coordinates, gridCls);
+				}
+				else
+				{
+					gridCls.fillField(getWhitespaces(node), coordinates);
+				}
+			}
+		}
+	}
+	
+	private void printBothConnector(Node<E> node, PairOfInts coordinates, Grid<E> grid)
+	{
+		printLeftConnector(node, coordinates, grid);
+		printRightConnector(node, coordinates, grid);
+	}
+	
+	private void printLeftConnector(Node<E> node, PairOfInts coordinates, Grid<E> grid)
+	{
+		PairOfInts tempCoordinates = coordinates;
+		tempCoordinates.y++;
+		grid.fillField("|", tempCoordinates);
+		tempCoordinates.y++;
+		grid.fillField("|", tempCoordinates);
+		
+	}
+	
+	private void printRightConnector(Node<E> node, PairOfInts coordinates, Grid<E> grid)
+	{
+		PairOfInts tempCoordinates = coordinates;
+		tempCoordinates.y++;
+		grid.fillField("|", tempCoordinates);
+		tempCoordinates.y++;
+		grid.fillField("|", tempCoordinates);
+	}
+	
+	private Node<E> getNodeIfExists(Node<E> root, PairOfInts coordinates)
+	{
+		for(Node<E> n: binaryTree.nodeList)
+		{
+			if(n.getCoordinatesInTree().equals(coordinates))
+				return n;
+		}
+		return null;
+	}
+	
+	private String getWhitespaces(Node<E> root)
 	{
 		String spaces = "";
+		maxLengthString = getMaxStringLength(root);
 		
 		for(int i = 0; i < maxLengthString; i++);
 		{
@@ -46,25 +120,32 @@ public class BinaryTreePrinter<E> extends Binarytree<E>
 		return spaces;
 	}
 	
-	private PairOfInts getNodeCoordinates(Node<E> node, int level)
+	private void setNodeCoordinates(Node<E> node, int level, int x, int y)
 	{
-		if(node == null)
-			return null;
+		int heightOfTree = binaryTree.getHeightOfTree();
+		int widthApart = heightOfTree + 2 - level;
 		
 		if(level == 1)
 		{
+			x = binaryTree.getMaxWidthOfTree(node, heightOfTree) / 2;
+			node.setCoordinatesInTree(x, y);
 		}
 		
-		return null;
+		if(node.hasLeft())
+		{
+			int newY = y + 4;
+			int newX = x + widthApart;
+			node.getLeft().setCoordinatesInTree(newX*(-1), newY);
+			setNodeCoordinates(node.getLeft(), ++level, newX, newY);
+		}
+		if(node.hasRight())
+		{
+			int newY = y + 4;
+			int newX = x + widthApart;
+			node.getRight().setCoordinatesInTree(newX, newY);
+			setNodeCoordinates(node.getRight(), ++level, newX, newY);
+		}
 	}
-	
-	/***************************************************************************
-	 * 								= Generating the grid
-	 * @param root - the root node of the binary tree
-	 ****************************************************************************/
-	
-	/***************************************************************************
-	 ***************************************************************************/
 	
 	private int getMaxStringLength(Node<E> node)
 	{
