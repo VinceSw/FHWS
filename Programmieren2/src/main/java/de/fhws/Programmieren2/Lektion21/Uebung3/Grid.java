@@ -4,20 +4,20 @@ import de.fhws.Programmieren2.Lektion21.Uebung3.Binarytree.Node;
 
 public class Grid<E>
 {
-	Node<E> root;
+	private Binarytree<E> binaryTree;
 	String[][] grid;
-	private PairOfInts gridDimension, coordinates;
+	private PairOfInts gridDimension;
 	private int maxLengthString;
 	
-	public Grid(Node<E> root, int maxLengthString)
+	public Grid(Binarytree<E> binaryTree, int maxLengthString)
 	{
-		this.root = root;
+		this.binaryTree = binaryTree;
 		this.maxLengthString = maxLengthString;
 	}
 	
-	public void generateGrid(Node<E> root)
+	public void generateGrid(Binarytree<E> binaryTree)
 	{
-		getGridDimension(root);
+		getGridDimension(binaryTree.getRoot());
 		//multiplying length to leave a little space in the grid for connectors
 		int x = gridDimension.getX();
 		int y = gridDimension.getY() * 4;
@@ -36,71 +36,29 @@ public class Grid<E>
 	
 	private void getGridDimension(Node<E> root)
 	{
-		int y = getHeightOfTree(root);
-		int x = getMaxWidthOfTree(root, y);
-		x += Math.pow(2, x);
+		int heightOfTree = binaryTree.getHeightOfTree();
+		int y = heightOfTree;
+		int x = getWidthOfGrid(heightOfTree);
 		gridDimension = new PairOfInts(x, y);
 		
 		System.out.println("x: " + x +"\ny: " + y + "\ngridDim: [" + gridDimension.getX() + "," + gridDimension.getY() +"]" );
 		System.out.println("Max length: " + maxLengthString);
 	}
 	
-	private int getHeightOfTree(Node<E> root)
+	private int getWidthOfGrid(int heightOfTree)
 	{
-		Node<E> node = root;
-		if(node == null)
-			return 0;
-		
-		int leftDepth = getHeightOfTree(node.getLeft());
-		int rightDepth = getHeightOfTree(node.getRight());
-		
-		if(leftDepth > rightDepth)
-			return (++leftDepth);
-		else
-			return (++rightDepth);
-	}
-	
-	private int getAmountOfNodes(Node<E> node)
-	{
-		int amountLeft = 0, amountRight = 0;
-		
-		if(node == null)
-			return 0;
-		
-		amountLeft += getAmountOfNodes(node.getLeft());
-		amountRight += getAmountOfNodes(node.getRight());
-		
-		return 1;
-		
-		
-	}
-	
-	private int getMaxWidthOfTree(Node<E> root, int heightOfTree)
-	{
-		Node<E> node = root;
-		int maxWidth = 0, newWidth = 0;
-		int h = heightOfTree;
-
-		for(int i = 1; i <= h; i++)
+		int result = 0;
+		for(int i = heightOfTree + 1; i > 1; i--)
 		{
-			newWidth = getWidthOfLevel(node, i);
-			if(newWidth > maxWidth)
-				maxWidth = newWidth;
+			result += i;
 		}
 		
-		return maxWidth;
+		return result;
 	}
 	
-	private int getWidthOfLevel(Node<E> node, int level)
+	public void fillField(String fillString, PairOfInts coordinates)
 	{
-		if(node == null)
-			return 0;
-		
-		if(level == 1)
-			return 1;
-		else if(level > 1)
-			return getWidthOfLevel(node.getLeft(), level-1) + getWidthOfLevel(node.getRight(), level-1);
-		
-		return 0;
+		this.grid[coordinates.getY()][coordinates.getX()] = fillString;
 	}
+	
 }
