@@ -76,6 +76,6 @@ public class TwotterSystem
 			return usrMsgList.get(u);
 		}
 		
-		return null;ö
+		return null;
 	}
 }

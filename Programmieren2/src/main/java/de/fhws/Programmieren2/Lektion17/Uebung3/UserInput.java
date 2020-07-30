@@ -14,7 +14,8 @@ public class UserInput implements LineProvider
 	@Override
 	public String nextLine()
 	{
-		
+	String s = "";
+	
 		return inputScan.nextLine();
 	}
 }
